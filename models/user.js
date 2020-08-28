@@ -1,11 +1,16 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: String,
-  email: String,
   avatar: String,
-  googleId: String
+  bio: String,
+  email: String,
+  alias: String,
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
 }, {
   timestamps: true
 });
