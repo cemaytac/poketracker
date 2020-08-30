@@ -13,7 +13,7 @@ function pokeTeam(req, res) {
     .then((users) => {
       axios.get(`https://pokeapi.co/api/v2/pokemon/${req.body.toLowerCase()}`)
         .then(response => {
-          res.render('pokemon/pokeTeamPage', {
+          res.redirect('pokemon/pokeTeamPage', {
             title: 'Add Your Team',
             pokemon: response.data,
             user: req.user,
