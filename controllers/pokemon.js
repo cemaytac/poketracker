@@ -11,9 +11,9 @@ module.exports = {
 function pokeTeam(req, res) {
   User.find({})
     .then((users) => {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.body.toLowerCase()}`)
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.body.search.toLowerCase()}`)
         .then(response => {
-          res.redirect('pokemon/pokeTeamPage', {
+          res.render('pokemon/pokeTeamPage', {
             title: 'Add Your Team',
             pokemon: response.data,
             user: req.user,

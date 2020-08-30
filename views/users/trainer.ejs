@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+
+<h3><%= title %></h3>
+<img src="/images/trainercard1.png" alt="pokenav" width='200px' height='160px'>
+
+<li class="nav-item">
+  <a class="nav-link active" id="profileinfo-tab" data-toggle="tab" href="#profileinfo" role="tab"
+    aria-controls="profileinfo" aria-selected="true">My Info</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" id="updateinfo-tab" data-toggle="tab" href="#updateinfo" role="tab" aria-controls="updateinfo"
+    aria-selected="false">Update Info</a>
+</li>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="profileinfo" role="tabpanel" aria-labelledby="profileinfo-tab">
+    <div class="card-body">
+      <h5 class="card-title">Name: <%= user.name %></h5>
+      <p class="card-text">Email: <%= user.email %></p>
+      <p class="card-text">Bio: <%= user.bio %></p>
+      <p class="card-text">Friend Code: <%= user.friendCode %></p>
+    </div>
+  </div>
+  <br>
+  <div class="tab-pane fade" id="updateinfo" role="tabpanel" aria-labelledby="updateinfo-tab">
+    <div class="card-body">
+      <form action="/users/trainer?_method=PUT" method="POST">
+        <div class="form-row">
+          <div>
+            <div class="form-row">
+              <div>
+                <label for="userName">Trainer Name:</label>
+                <input type="text" id="userNickname" class="trainer-form" name="nickname" value="<%= user.nickname %>">
+              </div><br>
+            </div>
+            <label for="avatarUrl">Avatar Image URL:</label>
+            <input type="text" id="avatarUrl" class="trainer-form" name="avatar" value="<%= user.avatar %>">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="bio">Bio:</label>
+            <textarea rows="4" id="bio" class="trainer-form" name="bio"><%= user.bio %></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="friendCode">Friend Code: </label>
+            <input type="text" required pattern="\d{4}-\d{4}-\d{4}" id="friendCode" class="trainer-form"
+              placeholder='####-####-#### format' name="friendCode" value="<%= user.friendCode %>">
+          </div><br>
+        </div>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+  <%- include('../partials/footer') %>
