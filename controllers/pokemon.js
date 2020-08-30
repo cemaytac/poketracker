@@ -4,8 +4,24 @@ const User = require('../models/user')
 
 module.exports = {
   pokedex,
-  pokeSearch
+  pokeSearch,
+  pokeTeam
 };
+
+function pokeTeam(req, res) {
+  User.find({})
+    .then((users) => {
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.body.toLowerCase()}`)
+        .then(response => {
+          res.render('pokemon/pokeTeamPage', {
+            title: 'Add Your Team',
+            pokemon: response.data,
+            user: req.user,
+            users
+          })
+        })
+    })
+}
 
 function pokeSearch(req, res) {
   User.find({})
