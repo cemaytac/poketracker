@@ -2,8 +2,7 @@ const router = require('express').Router();
 const usersCtrl = require('../controllers/users');
 
 // GET /users
-router.get('/', usersCtrl.index);
-router.get('/profile', isLoggedIn, usersCtrl.showProfile)
+router.get('/users', isLoggedIn, usersCtrl.index);
 
 
 function isLoggedIn(req, res, next) {
