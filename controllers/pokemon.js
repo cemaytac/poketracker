@@ -1,13 +1,16 @@
-const Pokemon = require('../models/Pokemon')
+const axios = require('axios')
+const Pokemon = require('../models/pokemons')
+const User = require('../models/user')
 
 module.exports = {
-  index,
+  pokedex,
 };
 
-function index(req, res) {
-  Pokemon.find({})
-    .then(users => {
-      res.render('pokemon/index', {
+function pokedex(req, res) {
+  User.find({})
+    .then((users) => {
+      res.render('pokemon/pokedexPage', {
+        title: 'Pokedex',
         user: req.user,
         users
       })
