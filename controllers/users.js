@@ -16,12 +16,13 @@ function update(req, res) {
 }
 
 function showTrainer(req, res) {
-  User.findById(req.user._id).then((user) => {
-    res.render('users/trainer', {
-      title: 'Trainer Page',
-      user
+  User.findById(req.user._id)
+    .then((user) => {
+      res.render('users/trainer', {
+        title: 'Trainer Page',
+        user
+      })
     })
-  })
 }
 
 function index(req, res) {
