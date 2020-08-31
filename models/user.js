@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   bio: String,
   friendCode: {
     type: String,
+    required: false
   },
   friends: [{
     type: Schema.Types.ObjectId,

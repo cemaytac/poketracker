@@ -8,6 +8,9 @@
   <div class="card-header">
   </div>
   <div class="card-body">
-    <h5 class="card-title"><%= userInfo.name %></h5>
+    <h3 class="card-title"><%= userInfo.name %></h3>
+    <p class="card-text">Joined: <%= userInfo.createdAt.toLocaleString() %></p>
+    <p class="card-text">Email: <a href="mailto:<%= userInfo.email %>"><%= userInfo.email %></a></p>
+    <p class="card-text">Friend Code: <%= userInfo.friendCode %></p>
 
     <%- include('../partials/footer') %>
