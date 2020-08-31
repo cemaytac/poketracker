@@ -16,7 +16,6 @@
       </div>
       <div class="poke-content">
         <h4><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h4>
-        <% if (pokemon) { %>
         <p>Type: <% pokemon.types.forEach(p => { %>
           <li> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </li>
         </p>
@@ -26,22 +25,19 @@
             <%= p.ability.name.charAt(0).toUpperCase() + p.ability.name.slice(1) %>
           </li>
           <% }) %>
-          <% } %></p>
-        <h2>HP: <%= pokemon.stats[0].base_stat %></h2>
-        <h2>Attack: <%= pokemon.stats[1].base_stat %></h2>
-        <h2>Defense: <%= pokemon.stats[2].base_stat %></h2>
-        <h2>Special Attack: <%= pokemon.stats[3].base_stat %></h2>
-        <h2>Special Defense: <%= pokemon.stats[4].base_stat %></h2>
-        <h2>Speed: <%= pokemon.stats[5].base_stat %></h2>
-        <p>Height: <%= pokemon.height / 10; %> m</p>
-        <p>Weight: <%= pokemon.weight / 10; %> kg</p>
-        <% if (pokemon) { %>
-        <p>Moves: <% pokemon.moves.forEach(p => { %>
-          <li>
-            <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
-          </li>
-          <% }) %>
-          <% } %></p>
+          <h2>HP: <%= pokemon.stats[0].base_stat %></h2>
+          <h2>Attack: <%= pokemon.stats[1].base_stat %></h2>
+          <h2>Defense: <%= pokemon.stats[2].base_stat %></h2>
+          <h2>Special Attack: <%= pokemon.stats[3].base_stat %></h2>
+          <h2>Special Defense: <%= pokemon.stats[4].base_stat %></h2>
+          <h2>Speed: <%= pokemon.stats[5].base_stat %></h2>
+          <p>Height: <%= pokemon.height / 10; %> m</p>
+          <p>Weight: <%= pokemon.weight / 10; %> kg</p>
+          <p>Moves: <% pokemon.moves.forEach(p => { %>
+            <li>
+              <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
+            </li>
+            <% }) %>
       </div>
     </div>
   </div>
