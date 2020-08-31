@@ -1,5 +1,13 @@
 <%- include('../partials/header') %>
 
+<h2><%= title %></h2>
 
+<div class="card" style="width: 15rem;">
+  <img id="avatarPhoto" style="height: 15rem;" class="card-img-top"
+    src="<%= userInfo.avatar ? userInfo.avatar : '/images/redSprite.png'  %>" alt="Card image">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= userInfo.name %></h5>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
