@@ -4,8 +4,20 @@ const Pokemon = require('../models/pokemons')
 module.exports = {
   index,
   showTrainer,
-  update
+  update,
+  show
 };
+
+function show(req, res) {
+  User.findById(req.params.id).then((userInfo) => {
+    res.render('users/show', {
+      title: 'User Details',
+      userInfo,
+      user: req.user
+    })
+  });
+
+}
 
 function update(req, res) {
   User.findByIdAndUpdate(req.user._id, req.body, {

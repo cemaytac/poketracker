@@ -5,6 +5,7 @@ router.get('/pokedex', isLoggedIn, pokemonCtrl.pokedex);
 router.get('/pokeTeam', isLoggedIn, pokemonCtrl.pokeTeam);
 router.post('/pokeSearch', isLoggedIn, pokemonCtrl.pokeSearch);
 
+
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.redirect("/auth/google");

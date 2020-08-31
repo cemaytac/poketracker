@@ -1,18 +1,5 @@
 <%- include('../partials/header') %>
 
-<% if (pokemon) { %>
-<div>
-  <div>
-    <div>
-      <h1>Search For Your Pokemon</h1>
-      <form action="/pokeSearch" method="POST">
-        <input type="text" name="search" placeholder="Enter pokemon name">
-        <button class="btn waves-effect waves-light" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</div>
 
-<% } %>
 
 <%- include('../partials/footer') %>
