@@ -16,7 +16,6 @@
       </div>
       <div class="poke-content">
         <h4><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h4>
-        <p>Type: <%= pokemon.types.name %></p>
         <% if (pokemon) { %>
         <p>Abilities: <% pokemon.abilities.forEach(p => { %>
           <li>
