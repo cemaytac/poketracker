@@ -5,7 +5,11 @@ const pokemonSchema = new mongoose.Schema({
   name: String,
   moves: [String],
   ev: Number,
-  evYield: Number
+  evYield: Number,
+  usedBy: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 })
 
 module.exports = mongoose.model('Pokemon', pokemonSchema)

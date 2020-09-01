@@ -10,11 +10,17 @@ module.exports = {
 
 function show(req, res) {
   User.findById(req.params.id).then((userInfo) => {
-    res.render('users/show', {
-      title: 'User Details',
-      userInfo,
-      user: req.user
-    })
+    Pokemon.find({
+        usedBy: userInfo._id
+      })
+      .then((pokemon) => {
+        res.render('users/show', {
+          title: 'User Details',
+          userInfo,
+          user: req.user,
+          pokemon
+        })
+      })
   });
 }
 
