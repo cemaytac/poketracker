@@ -5,7 +5,7 @@ module.exports = {
   index,
   showTrainer,
   update,
-  show
+  show,
 };
 
 function show(req, res) {
@@ -16,7 +16,6 @@ function show(req, res) {
       user: req.user
     })
   });
-
 }
 
 function update(req, res) {

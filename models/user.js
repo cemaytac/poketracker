@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   nickname: String,
   avatar: String,
   bio: String,
+  team: [String],
   friendCode: {
     type: String,
     required: false

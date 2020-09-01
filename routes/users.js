@@ -5,7 +5,7 @@ const usersCtrl = require('../controllers/users');
 router.get('/', isLoggedIn, usersCtrl.index);
 router.get('/trainer', isLoggedIn, usersCtrl.showTrainer);
 router.put('/trainer', isLoggedIn, usersCtrl.update);
-router.get('/:id', isLoggedIn, usersCtrl.show)
+router.get('/:id', isLoggedIn, usersCtrl.show);
 
 
 function isLoggedIn(req, res, next) {
