@@ -61,9 +61,9 @@
         </div><br>
         <div class="tab-pane fade show" id="pokemonTeam" role="tabpanel" aria-labelledby="pokemon-tab">
           <div class="card-body">
-            <% user.team.forEach(t => { %>
-            <a href="/pokemon/<%= t.id %>">
-              <p><%= t.name %></p>
+            <% user.team.forEach(p => { %>
+            <a href="/pokemon/<%= p.id %>">
+              <p><%= p.name %></p>
             </a>
             <% }) %>
           </div>

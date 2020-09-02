@@ -1,29 +1,19 @@
 <%- include('../partials/header') %>
 
-<h2></h2>
-<section id="show-page">
-  <div>Pokemon: </div>
-  <div><%= pokemon.name %></div>
-</section>
-<br><br>
+<h2>Pokemonnnn</h2>
 
-<% if (usedBy.some()) { %>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Abilities</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% pokemon.species.forEach(p => { %>
-    <tr>
-      <td><%= p.types %></td>
-      <td><%= p.abilities %></td>
-    </tr>
-    <% }); %>
-  </tbody>
-</table>
-<% } %>
+<% if (user.team.some(p => {return p.id === pokemons.id})) { %>
+<form action="/pokemon/<%= pokemons.id %>/?_method=DELETE" method="POST">
+  <% } else { %>
+  <form action="/pokemon/<%= pokemons.id %>" method="POST">
+    <% } %>
+    <input type="text" hidden name="name" value="<%= pokemons.name %>">
+    <input type="number" hidden name="id" value="<%= pokemons.id %>">
+    <input type="text" hidden name="pokeType" value="<%= pokemons.pokeType %>">
+    <input type="text" hidden name="img" value="<%= pokemons.img %>">
 
-<%- include('../partials/footer') %>
+    <button
+      class="btn btn-success"><%= user.team.some(p => {return p.id === pokemons.id}) ? "Unwatch" : "Watch" %></button>
+  </form>
+
+  <%- include('../partials/footer') %>
