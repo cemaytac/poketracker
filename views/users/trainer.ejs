@@ -47,7 +47,17 @@
             <label for="friendCode">Friend Code: </label>
             <input type="text" required pattern="\d{4}-\d{4}-\d{4}" id="friendCode" class="trainer-form"
               placeholder='####-####-####' name="friendCode" value="<%= user.friendCode %>">
-          </div><br>
+          </div>
+        </div><br>
+        <div class="tab-pane fade show" id="pokemonTeam" role="tabpanel" aria-labelledby="watchlist-tab">
+          <div class="card-body">
+            <!-- This is where we'll use a forEach to display watchlist items -->
+            <% user.watchList.forEach(g => { %>
+            <a href="/games/<%= g.slug %>">
+              <p><%= g.title %></p>
+            </a>
+            <% }) %>
+          </div>
         </div>
         <button type="submit">Update</button>
       </form>
