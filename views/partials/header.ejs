@@ -2,7 +2,10 @@
 <html>
 
 <head>
-  <title>Users</title>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script defer src="/javascripts/scripts.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheets/style.css" />
@@ -10,20 +13,35 @@
 
 <body>
   <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="" class="brand-logo left">Users</a>
-        <ul class="right">
-          <li>
-            <% if (user) { %>
-            <a class='poke-link' href="/pokedex">Pokedex</a>
-            <a class='poke-link' href="/pokeTeam/new">My Team</a>
-            <a class='poke-link' href="/users">User List</a>
-            <a class='poke-link' href="/users/trainer">My Trainer Card</a>
+    <nav class="navbar navbar-expand-lg">
+      <img width="40" id="pokeballPic" src="/images/pokeball.png" alt="">
+      <div class="nav-collapse collapse show" id='navbar'>
+        <a class="navbar-logo" href="/">PokeTracker</a>
+        <ul class="navbar-nav">
+          <% if (user) { %>
+          <li class="nav-item">
+            <a class='nav-link' href="/pokedex">Pokedex</a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link' href="/pokeTeam/new">My Team</a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link' href="/users">User List</a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link' href="/users/trainer">My Trainer Card</a>
+          </li>
+          <li class="nav-item">
             <a href="/auth/logout">Log Out</a>
-            <% } else { %>
+          </li>
+          <li class="nav-item">
+            <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="">
+          </li>
+          <% } else { %>
+          <li class="nav-item">
             <a href="/auth/google">Login with Google</a>
-            <% } %>
+          </li>
+          <% } %>
           </li>
         </ul>
       </div>

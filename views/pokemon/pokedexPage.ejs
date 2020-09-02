@@ -1,49 +1,64 @@
 <%- include('../partials/header') %>
 
-<h1>Pokedex</h1>
-<img src="/images/pokedex.png" alt="pokedex">
-<form action="/pokeSearch" method="POST">
-  <input type="text" name="query" placeholder="Enter pokemon name">
-  <button class="btn waves-effect waves-light" type="submit">Search</button>
+<div class='pokedex-img'>
+  <h1>Pokedex</h1>
+  <img src="/images/pokedex.png" alt="pokedex">
+</div>
+<form action="/pokeSearch" method="POST" class='pokesearch'>
+  <input type="text" name="query" placeholder="Enter Pokemon Name">
+  <button class='poke-button' type="submit">Search</button>
 </form>
 
 <% if (pokemon) { %>
 <div class="container">
   <div class="poke-image">
-    <img src="<%= pokemon.sprites.front_default %>" alt="default sprite">
-    <img src="<%= pokemon.sprites.front_shiny %>" alt="shiny sprite">
+    <img src="<%= pokemon.sprites.front_default %>" class="poke-sprite" id="default-sprite" alt="default sprite">
+    <img src="<%= pokemon.sprites.front_shiny %>" class="poke-sprite" id="shiny-sprite" alt="shiny sprite">
   </div>
   <div class="poke-content">
-    <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
-    <h4>ID: <%= pokemon.id %></h4>
-    <h5>Type: <% pokemon.types.forEach(p => { %>
-      <ul> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </ul>
-      <% }) %>
+    <div class='name-add'>
+      <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
+      <h4>ID: <%= pokemon.id %></h4>
+      <a href="/pokemon/<%= pokemon.id %>" method="POST" class="btn btn-primary" id='add-poke'>Add to team!</a>
+    </div>
+    <div class='poke-category'>
+      <h5>Type: <% pokemon.types.forEach(p => { %>
+        <ul> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </ul>
+        <% }) %>
+      </h5>
+      <h5>Abilities: <% pokemon.abilities.forEach(p => { %>
+        <ul>
+          <%= p.ability.name.charAt(0).toUpperCase() + p.ability.name.slice(1) %>
+        </ul>
+        <% }) %>
+    </div>
     </h5>
-    <h5>Abilities: <% pokemon.abilities.forEach(p => { %>
-      <ul>
-        <%= p.ability.name.charAt(0).toUpperCase() + p.ability.name.slice(1) %>
-      </ul>
-      <% }) %>
-    </h5>
+  </div>
+  <div class='measurements'>
+    <p>Height: <%= pokemon.height / 10; %> m</p>
+    <p>Weight: <%= pokemon.weight / 10; %> kg</p>
   </div>
   <div class="poke-stats">
-    <h2>HP: <%= pokemon.stats[0].base_stat %></h2>
-    <h2>Attack: <%= pokemon.stats[1].base_stat %></h2>
-    <h2>Defense: <%= pokemon.stats[2].base_stat %></h2>
-    <h2>Special Attack: <%= pokemon.stats[3].base_stat %></h2>
-    <h2>Special Defense: <%= pokemon.stats[4].base_stat %></h2>
-    <h2>Speed: <%= pokemon.stats[5].base_stat %></h2>
+    <h2>HP: </h2>
+    <h3><%= pokemon.stats[0].base_stat %></h3>
+    <h2>Attack: </h2>
+    <h3><%= pokemon.stats[1].base_stat %></h3>
+    <h2>Defense: </h2>
+    <h3><%= pokemon.stats[2].base_stat %></h3>
+    <h2>Special Attack: </h2>
+    <h3><%= pokemon.stats[3].base_stat %></h3>
+    <h2>Special Defense: </h2>
+    <h3><%= pokemon.stats[4].base_stat %></h3>
+    <h2>Speed: </h2>
+    <h3><%= pokemon.stats[5].base_stat %></h3>
   </div>
-  <p>Height: <%= pokemon.height / 10; %> m</p>
-  <p>Weight: <%= pokemon.weight / 10; %> kg</p>
-  <a href="/pokemon/<%= pokemon.id %>" method="POST" class="btn btn-primary">Add to team!</a>
   <div class="poke-moves">
-    <p>Moves: <% pokemon.moves.forEach(p => { %>
-      <ul>
-        <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
-      </ul>
-      <% }) %>
+    <h3>Moves: </h3>
+    <% pokemon.moves.forEach(p => { %>
+    <ul>
+      <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
+    </ul>
+    <% }) %>
   </div>
 </div>
 

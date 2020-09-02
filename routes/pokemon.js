@@ -3,7 +3,6 @@ const pokemonCtrl = require('../controllers/pokemon');
 
 router.get('/pokedex', pokemonCtrl.pokedex);
 router.post('/pokeSearch', isLoggedIn, pokemonCtrl.pokeSearch);
-router.get('/pokeTeam', isLoggedIn, pokemonCtrl.newPokemon)
 router.post('/:id', isLoggedIn, pokemonCtrl.pokeAdd);
 router.get('/:id', isLoggedIn, pokemonCtrl.show);
 

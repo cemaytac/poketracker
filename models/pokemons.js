@@ -6,7 +6,6 @@ const pokemonSchema = new mongoose.Schema({
   ability: String,
   id: Number,
   moves: [String],
-  ev: Number,
   evYield: Number,
   usedBy: [{
     type: Schema.Types.ObjectId,

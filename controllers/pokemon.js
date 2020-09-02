@@ -15,21 +15,21 @@ module.exports = {
 
 
 function pokeAdd(req, res) {
-  req.body.usedBy = req.user._id
+  axios.get(`https://pokeapi.co/api/v2/pokemon/${req.body.query.toLowerCase()}`)
   Pokemon.findOne({
-      id: req.body.id
+      id: req.params.id
     })
     .then((pokemon) => {
       if (pokemon) {
         pokemon.usedBy.push(req.user._id)
         pokemon.save()
           .then(() => {
-            res.redirect(`/pokemon/${req.body.id}`)
+            res.redirect(`/pokemon/${req.params.id}`)
           })
       } else {
         Pokemon.create(req.body)
           .then(() => {
-            res.redirect(`/pokemon/${req.body.id}`)
+            res.redirect(`/pokemon/${req.params.id}`)
           })
       }
     })
@@ -49,34 +49,34 @@ function newPokemon(req, res) {
 }
 
 function show(req, res) {
-  User.find({})
-    .then((users) => {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id.toLowerCase()}`)
-        .then((response) => {
-          Pokemon.findOne({
-              id: response.data.id
-            })
-            .populate('usedBy')
-            .then((pokemon) => {
-              if (pokemon) {
-                res.render('pokemon/pokeShow', {
-                  user: req.user,
-                  pokemon: response.data,
-                  usedBy: pokemon.usedBy,
-                  pokemonId: pokemon._id,
-                  users
-                })
-              } else {
-                res.render('pokemon/pokeShow', {
-                  user: req.user,
-                  pokemon: response.data,
-                  usedBy: [""],
-                  users
-                })
-              }
-            })
-        })
-    })
+  // User.find({})
+  //   .then((users) => {
+  //     axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id.toLowerCase()}`)
+  //       .then((response) => {
+  //         Pokemon.findOne({
+  //             id: response.data.id
+  //           })
+  //           .populate('usedBy')
+  //           .then((pokemon) => {
+  //             if (pokemon) {
+  //               res.render('pokemon/pokeShow', {
+  //                 user: req.user,
+  //                 pokemon: response.data,
+  //                 usedBy: pokemon.usedBy,
+  //                 pokemonId: pokemon._id,
+  //                 users
+  //               })
+  //             } else {
+  //               res.render('pokemon/pokeShow', {
+  //                 user: req.user,
+  //                 pokemon: response.data,
+  //                 usedBy: [""],
+  //                 users
+  //               })
+  //             }
+  //           })
+  //       })
+  //   })
 }
 
 function pokeSearch(req, res) {
