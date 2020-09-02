@@ -23,23 +23,20 @@
             <a class='nav-link' href="/pokedex">Pokedex</a>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="/pokeTeam/new">My Team</a>
-          </li>
-          <li class="nav-item">
             <a class='nav-link' href="/users">User List</a>
           </li>
           <li class="nav-item">
             <a class='nav-link' href="/users/trainer">My Trainer Card</a>
           </li>
           <li class="nav-item">
-            <a href="/auth/logout">Log Out</a>
+            <a class="nav-link" href="/auth/logout">Log Out</a>
           </li>
           <li class="nav-item">
-            <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="">
+            <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="user avatar">
           </li>
           <% } else { %>
           <li class="nav-item">
-            <a href="/auth/google">Login with Google</a>
+            <a class="nav-link" href="/auth/google">Login with Google</a>
           </li>
           <% } %>
           </li>
