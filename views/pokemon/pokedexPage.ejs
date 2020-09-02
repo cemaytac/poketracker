@@ -15,6 +15,7 @@
   </div>
   <div class="poke-content">
     <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
+    <h4>ID: <%= pokemon.id %></h4>
     <h5>Type: <% pokemon.types.forEach(p => { %>
       <ul> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </ul>
       <% }) %>
@@ -36,6 +37,7 @@
   </div>
   <p>Height: <%= pokemon.height / 10; %> m</p>
   <p>Weight: <%= pokemon.weight / 10; %> kg</p>
+  <a href="/pokemon/<%= pokemon.id %>" method="POST" class="btn btn-primary">Add to team!</a>
   <div class="poke-moves">
     <p>Moves: <% pokemon.moves.forEach(p => { %>
       <ul>
