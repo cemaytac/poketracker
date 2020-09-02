@@ -9,19 +9,20 @@ module.exports = {
 };
 
 function show(req, res) {
-  User.findById(req.params.id).then((userInfo) => {
-    Pokemon.find({
-        usedBy: userInfo._id
-      })
-      .then((pokemon) => {
-        res.render('users/show', {
-          title: 'User Details',
-          userInfo,
-          user: req.user,
-          pokemon
+  User.findById(req.params.id)
+    .then((userInfo) => {
+      Pokemon.find({
+          usedBy: userInfo._id
         })
-      })
-  });
+        .then((pokemon) => {
+          res.render('users/show', {
+            title: 'User Details',
+            userInfo,
+            pokemon,
+            user: req.user
+          })
+        })
+    });
 }
 
 function update(req, res) {

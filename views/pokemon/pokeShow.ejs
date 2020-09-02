@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+
+<h2></h2>
+<section id="show-page">
+  <div>Pokemon: </div>
+  <div><%= pokemon.name %></div>
+</section>
+<br><br>
+
+<% if (usedBy.some()) { %>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Abilities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pokemon.species.forEach(p => { %>
+    <tr>
+      <td><%= p.types %></td>
+      <td><%= p.abilities %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<% } %>
+
+<%- include('../partials/footer') %>

@@ -3,47 +3,45 @@
 <h1>Pokedex</h1>
 <img src="/images/pokedex.png" alt="pokedex">
 <form action="/pokeSearch" method="POST">
-  <input type="text" name="search" placeholder="Enter pokemon name">
+  <input type="text" name="query" placeholder="Enter pokemon name">
   <button class="btn waves-effect waves-light" type="submit">Search</button>
 </form>
 
 <% if (pokemon) { %>
-<div class="">
-  <div class="">
-    <div class="container">
-      <div class="poke-image">
-        <img src="<%= pokemon.sprites.front_default %>" alt="">
-      </div>
-      <div class="poke-content">
-        <h4><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h4>
-        <p>Type: <% pokemon.types.forEach(p => { %>
-          <ul> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </ul>
-        </p>
-        <% }) %>
-        <p>Abilities: <% pokemon.abilities.forEach(p => { %>
-          <ul>
-            <%= p.ability.name.charAt(0).toUpperCase() + p.ability.name.slice(1) %>
-          </ul>
-          <% }) %>
-      </div>
-      <div class="poke-stats">
-        <h2>HP: <%= pokemon.stats[0].base_stat %></h2>
-        <h2>Attack: <%= pokemon.stats[1].base_stat %></h2>
-        <h2>Defense: <%= pokemon.stats[2].base_stat %></h2>
-        <h2>Special Attack: <%= pokemon.stats[3].base_stat %></h2>
-        <h2>Special Defense: <%= pokemon.stats[4].base_stat %></h2>
-        <h2>Speed: <%= pokemon.stats[5].base_stat %></h2>
-      </div>
-      <p>Height: <%= pokemon.height / 10; %> m</p>
-      <p>Weight: <%= pokemon.weight / 10; %> kg</p>
-      <div class="poke-moves">
-        <p>Moves: <% pokemon.moves.forEach(p => { %>
-          <ul>
-            <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
-          </ul>
-          <% }) %>
-      </div>
-    </div>
+<div class="container">
+  <div class="poke-image">
+    <img src="<%= pokemon.sprites.front_default %>" alt="default sprite">
+    <img src="<%= pokemon.sprites.front_shiny %>" alt="shiny sprite">
+  </div>
+  <div class="poke-content">
+    <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
+    <h5>Type: <% pokemon.types.forEach(p => { %>
+      <ul> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </ul>
+      <% }) %>
+    </h5>
+    <h5>Abilities: <% pokemon.abilities.forEach(p => { %>
+      <ul>
+        <%= p.ability.name.charAt(0).toUpperCase() + p.ability.name.slice(1) %>
+      </ul>
+      <% }) %>
+    </h5>
+  </div>
+  <div class="poke-stats">
+    <h2>HP: <%= pokemon.stats[0].base_stat %></h2>
+    <h2>Attack: <%= pokemon.stats[1].base_stat %></h2>
+    <h2>Defense: <%= pokemon.stats[2].base_stat %></h2>
+    <h2>Special Attack: <%= pokemon.stats[3].base_stat %></h2>
+    <h2>Special Defense: <%= pokemon.stats[4].base_stat %></h2>
+    <h2>Speed: <%= pokemon.stats[5].base_stat %></h2>
+  </div>
+  <p>Height: <%= pokemon.height / 10; %> m</p>
+  <p>Weight: <%= pokemon.weight / 10; %> kg</p>
+  <div class="poke-moves">
+    <p>Moves: <% pokemon.moves.forEach(p => { %>
+      <ul>
+        <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
+      </ul>
+      <% }) %>
   </div>
 </div>
 
