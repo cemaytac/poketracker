@@ -15,24 +15,24 @@ module.exports = {
 
 
 function pokeAdd(req, res) {
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${req.body.query.toLowerCase()}`)
-  Pokemon.findOne({
-      id: req.params.id
-    })
-    .then((pokemon) => {
-      if (pokemon) {
-        pokemon.usedBy.push(req.user._id)
-        pokemon.save()
-          .then(() => {
-            res.redirect(`/pokemon/${req.params.id}`)
-          })
-      } else {
-        Pokemon.create(req.body)
-          .then(() => {
-            res.redirect(`/pokemon/${req.params.id}`)
-          })
-      }
-    })
+  // axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id.toLowerCase()}`)
+  // Pokemon.findOne({
+  //     id: req.params.id
+  //   })
+  //   .then((pokemon) => {
+  //     if (pokemon) {
+  //       pokemon.usedBy.push(req.user._id)
+  //       pokemon.save()
+  //         .then(() => {
+  //           res.redirect(`/pokemon/${req.params.id}`)
+  //         })
+  //     } else {
+  //       Pokemon.create(req.body)
+  //         .then(() => {
+  //           res.redirect(`/pokemon/${req.params.id}`)
+  //         })
+  //     }
+  //   })
 }
 
 function newPokemon(req, res) {

@@ -93,10 +93,11 @@ body {
 
 .poke-category {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
   margin: 20px;
-  padding: 20px;
+  text-align: center;
 }
 
 .measurements {
@@ -114,9 +115,4 @@ body {
   padding: 20px;
   margin-top: 50px;
   grid-template-columns: repeat(4, 2fr);
-}
-
-#search-row,
-form {
-  padding-top: 20px;
 }

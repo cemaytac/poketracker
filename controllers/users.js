@@ -12,7 +12,7 @@ function show(req, res) {
   User.findById(req.params.id)
     .then((userInfo) => {
       Pokemon.find({
-          usedBy: userInfo._id
+          team: userInfo._id
         })
         .then((pokemon) => {
           res.render('users/show', {
