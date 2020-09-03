@@ -2,8 +2,8 @@
 
 <h2><%= title %></h2>
 
-<div class="card" style="width: 15rem;">
-  <img id="avatarPhoto" style="height: 15rem;" class="card-img-top"
+<div class="card" style="width: 22rem;">
+  <img id="avatarPhoto" style="height: 18rem;" class="card-img-top"
     src="<%= userInfo.avatar ? userInfo.avatar : '/images/redSprite.png'  %>" alt="Card image">
   <div class="card-header">
   </div>
@@ -13,9 +13,5 @@
     <p class="card-text">Bio: <%= userInfo.bio %></p>
     <p class="card-text">Email: <a href="mailto:<%= userInfo.email %>"><%= userInfo.email %></a></p>
     <p class="card-text">Friend Code: <%= userInfo.friendCode %></p>
-    <p class="card-text">Pokemon: </p>
-    <% pokemons.forEach(pokemon => { %>
-    <a href="/pokemon/<%= pokemon.id %>"><%= pokemon.name %></a><br>
-    <% }) %>
 
     <%- include('../partials/footer') %>
