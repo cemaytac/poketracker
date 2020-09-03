@@ -22,57 +22,60 @@
       <a href="/pokemon/<%= pokemon.id %>" class="btn btn-primary">Add to team!</a>
     </div>
     <div class='poke-category'>
-      <h5>Type: <% pokemon.types.forEach(p => { %>
+      <div class='poke-type'>
+        <h5>Type: </h5><% pokemon.types.forEach(p => { %>
         <ul> <%= p.type.name.charAt(0).toUpperCase() + p.type.name.slice(1) %> </ul>
         <% }) %>
-      </h5>
-      <h5>Abilities: <% pokemon.abilities.forEach(p => { %>
+      </div>
+      <div class='poke-ability'>
+        <h5>Abilities: <% pokemon.abilities.forEach(p => { %>
+        </h5>
         <ul>
           <%= p.ability.name.charAt(0).toUpperCase() + p.ability.name.slice(1) %>
         </ul>
         <% }) %>
+      </div>
     </div>
-    </h5>
-  </div>
-  <div class='measurements'>
-    <p>Height: <%= pokemon.height / 10; %> m</p>
-    <p>Weight: <%= pokemon.weight / 10; %> kg</p>
-  </div>
-  <div class="poke-stats">
-    <h2>HP: </h2>
-    <h3><%= pokemon.stats[0].base_stat %></h3>
-    <h2>Attack: </h2>
-    <h3><%= pokemon.stats[1].base_stat %></h3>
-    <h2>Defense: </h2>
-    <h3><%= pokemon.stats[2].base_stat %></h3>
-    <h2>Special Attack: </h2>
-    <h3><%= pokemon.stats[3].base_stat %></h3>
-    <h2>Special Defense: </h2>
-    <h3><%= pokemon.stats[4].base_stat %></h3>
-    <h2>Speed: </h2>
-    <h3><%= pokemon.stats[5].base_stat %></h3>
-  </div>
-  <div class="poke-moves">
+    <div class='measurements'>
+      <p>Height: <%= pokemon.height / 10; %> m</p>
+      <p>Weight: <%= pokemon.weight / 10; %> kg</p>
+    </div>
+    <div class="poke-stats">
+      <h2>HP: </h2>
+      <h3><%= pokemon.stats[0].base_stat %></h3>
+      <h2>Attack: </h2>
+      <h3><%= pokemon.stats[1].base_stat %></h3>
+      <h2>Defense: </h2>
+      <h3><%= pokemon.stats[2].base_stat %></h3>
+      <h2>Special Attack: </h2>
+      <h3><%= pokemon.stats[3].base_stat %></h3>
+      <h2>Special Defense: </h2>
+      <h3><%= pokemon.stats[4].base_stat %></h3>
+      <h2>Speed: </h2>
+      <h3><%= pokemon.stats[5].base_stat %></h3>
+    </div>
+    <br>
     <h3>Moves: </h3>
-    <% pokemon.moves.forEach(p => { %>
-    <ul>
-      <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
-    </ul>
-    <% }) %>
+    <div class="poke-moves">
+      <% pokemon.moves.forEach(p => { %>
+      <ul>
+        <%= p.move.name.charAt(0).toUpperCase() + p.move.name.slice(1) %>
+      </ul>
+      <% }) %>
+    </div>
   </div>
-</div>
-<% if (user.team.some(p => {return p.id === pokemon.id})) { %>
-<form action="/pokemon/<%= pokemon.id %>/?_method=DELETE" method="POST">
-  <% } else { %>
-  <form action="/pokemon/<%= pokemon.id %>/" method="POST">
+  <% if (user.team.some(p => {return p.id === pokemon.id})) { %>
+  <form action="/pokemon/<%= pokemon.id %>/?_method=DELETE" method="POST">
+    <% } else { %>
+    <form action="/pokemon/<%= pokemon.id %>/" method="POST">
+      <% } %>
+      <input type="text" hidden name="name" value="<%= pokemon.name %>">
+      <input type="text" hidden name="id" value="<%= pokemon.id %>">
+      <button
+        class="btn btn-success"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
+    </form>
+
+
     <% } %>
-    <input type="text" hidden name="name" value="<%= pokemon.name %>">
-    <input type="text" hidden name="id" value="<%= pokemon.id %>">
-    <button
-      class="btn btn-success"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
-  </form>
 
-
-  <% } %>
-
-  <%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
