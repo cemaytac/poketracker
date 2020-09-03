@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   nickname: String,
   avatar: String,
   bio: String,
+  googleId: String,
   team: [teamSchema],
   friendCode: {
     type: String,

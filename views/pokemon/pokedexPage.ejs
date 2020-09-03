@@ -4,7 +4,7 @@
   <h1>Pokedex</h1>
   <img src="/images/pokedex.png" alt="pokedex">
 </div>
-<form action="/pokemon/pokeSearch" method="POST" class='pokesearch'>
+<form action="/pokemon/pokeSearch" method="POST" class='pokesearch' onload="saveSound()">
   <input type="text" name="query" placeholder="Enter Pokemon Name">
   <button class='poke-button' type="submit" onclick="bling()">Search</button>
 </form>
