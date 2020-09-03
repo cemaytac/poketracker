@@ -24,7 +24,6 @@ function pokeRemove(req, res) {
     console.log('pokemon id', p.id)
     return p.id === parseInt(req.params.id)
   })
-
   console.log('idx', idx)
   req.user.team.splice(idx, 1)
   req.user.save().then(() => {
