@@ -19,7 +19,18 @@
     <div class='name-add'>
       <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
       <h4>ID: <%= pokemon.id %></h4>
-      <a href="/pokemon/<%= pokemon.id %>" class="btn btn-primary">Add to team!</a>
+      <% if (user.team.some(p => {return p.id === pokemon.id})) { %>
+      <form action="/pokemon/<%= pokemon.id %>/team?_method=DELETE" method="POST">
+        <% } else { %>
+        <form action="/pokemon/<%= pokemon.id %>/team" method="POST">
+          <% } %>
+          <input type="text" hidden name="name" value="<%= pokemon.name %>">
+          <input type="text" hidden name="id" value="<%= pokemon.id %>">
+          <input type="text" hidden name="img" value="<%= pokemon.sprites.front_default %>">
+
+          <button
+            class="btn btn-success"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
+        </form>
     </div>
     <div class='poke-category'>
       <div class='poke-type'>
@@ -55,7 +66,7 @@
       <h3><%= pokemon.stats[5].base_stat %></h3>
     </div>
     <br>
-    <h3>Moves: </h3>
+    <h3>Learnable Moves: </h3>
     <div class="poke-moves">
       <% pokemon.moves.forEach(p => { %>
       <ul>
@@ -64,18 +75,8 @@
       <% }) %>
     </div>
   </div>
-  <% if (user.team.some(p => {return p.id === pokemon.id})) { %>
-  <form action="/pokemon/<%= pokemon.id %>/?_method=DELETE" method="POST">
-    <% } else { %>
-    <form action="/pokemon/<%= pokemon.id %>/" method="POST">
-      <% } %>
-      <input type="text" hidden name="name" value="<%= pokemon.name %>">
-      <input type="text" hidden name="id" value="<%= pokemon.id %>">
-      <button
-        class="btn btn-success"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
-    </form>
 
 
-    <% } %>
+  <% } %>
 
-    <%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>

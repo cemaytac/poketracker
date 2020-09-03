@@ -5,7 +5,7 @@ router.get('/pokedex', pokemonCtrl.pokedex);
 router.post('/pokeSearch', isLoggedIn, pokemonCtrl.pokeSearch);
 router.get('/:id', isLoggedIn, pokemonCtrl.show);
 router.post('/:id/team', isLoggedIn, pokemonCtrl.pokeAdd);
-router.delete(':/id/team', isLoggedIn, pokemonCtrl.pokeRemove);
+router.delete('/:id/team', isLoggedIn, pokemonCtrl.pokeRemove);
 
 
 function isLoggedIn(req, res, next) {

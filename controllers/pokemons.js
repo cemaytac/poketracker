@@ -1,9 +1,6 @@
-const axios = require('axios')
 const Pokemon = require('../models/pokemon')
+const axios = require('axios');
 const User = require('../models/user');
-const {
-  response
-} = require('express');
 
 module.exports = {
   pokedex,
@@ -15,37 +12,41 @@ module.exports = {
 
 function pokeAdd(req, res) {
   req.user.team.push(req.body)
+  console.log(req.body.id)
   req.user.save().then(() => {
-    res.redirect(`/pokemon/${req.body.id}`)
+    res.redirect(`/users/trainer`)
   })
 }
 
 function pokeRemove(req, res) {
-  let idx = req.user.team.findIndex((p) => p.id === req.params.id)
+  console.log('req.params.id', req.params.id)
+  let idx = req.user.team.findIndex((p) => {
+    console.log('pokemon id', p.id)
+    return p.id === parseInt(req.params.id)
+  })
+
+  console.log('idx', idx)
   req.user.team.splice(idx, 1)
   req.user.save().then(() => {
-    res.redirect(`/pokemon/${req.body.id}`)
+    res.redirect(`/users/trainer`)
   })
 }
 
 function show(req, res) {
-  User.find({})
-    .then((users) => {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
-        .then((response) => {
-          Pokemon.findOne({
-              id: response.data.id
+  axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
+    .then((response) => {
+      Pokemon.findOne({
+          id: response.data.id
+        })
+        .then((pokemon) => {
+          if (pokemon) {
+            res.render('pokemon/show', {
+              user: req.user,
+              pokemon: response.data,
+              id: pokemon.id,
+              users
             })
-            .then((pokemon) => {
-              if (pokemon) {
-                res.render('pokemon/show', {
-                  user: req.user,
-                  pokemon: response.data,
-                  id: pokemon.id,
-                  users
-                })
-              }
-            })
+          }
         })
     })
 }
