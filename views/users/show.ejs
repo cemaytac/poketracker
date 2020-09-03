@@ -10,8 +10,12 @@
   <div class="card-body">
     <h3 class="card-title"><%= userInfo.name %></h3>
     <p class="card-text">Joined: <%= userInfo.createdAt.toLocaleString() %></p>
+    <p class="card-text">Bio: <%= userInfo.bio %></p>
     <p class="card-text">Email: <a href="mailto:<%= userInfo.email %>"><%= userInfo.email %></a></p>
     <p class="card-text">Friend Code: <%= userInfo.friendCode %></p>
-    <p class="card-text">Pokemon: <%= userInfo.team %></p>
+    <p class="card-text">Pokemon: </p>
+    <% pokemons.forEach(pokemon => { %>
+    <a href="/pokemon/<%= pokemon.id %>"><%= pokemon.name %></a><br>
+    <% }) %>
 
     <%- include('../partials/footer') %>

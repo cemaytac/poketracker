@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const pokemonCtrl = require('../controllers/pokemon');
+const pokemonCtrl = require('../controllers/pokemons');
 
 router.get('/pokedex', pokemonCtrl.pokedex);
 router.post('/pokeSearch', isLoggedIn, pokemonCtrl.pokeSearch);
-router.post('/:id', isLoggedIn, pokemonCtrl.pokeAdd);
+router.get('/:id/team', isLoggedIn, pokemonCtrl.show);
+router.post('/:id/team', isLoggedIn, pokemonCtrl.pokeAdd);
 router.delete(':/id', isLoggedIn, pokemonCtrl.pokeRemove);
-router.get('/:id', isLoggedIn, pokemonCtrl.show);
 
 
 function isLoggedIn(req, res, next) {

@@ -4,7 +4,7 @@
   <h1>Pokedex</h1>
   <img src="/images/pokedex.png" alt="pokedex">
 </div>
-<form action="/pokeSearch" method="POST" class='pokesearch'>
+<form action="/pokemon/pokeSearch" method="POST" class='pokesearch'>
   <input type="text" name="query" placeholder="Enter Pokemon Name">
   <button class='poke-button' type="submit" onclick="bling()">Search</button>
 </form>
@@ -19,7 +19,7 @@
     <div class='name-add'>
       <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
       <h4>ID: <%= pokemon.id %></h4>
-      <a href="/pokemon/<%= pokemon.id %>" method="POST" class="btn btn-primary" id='add-poke'>Add to team!</a>
+      <a href="/pokemon/<%= pokemon.id %>" class="btn btn-primary">Add to team!</a>
     </div>
     <div class='poke-category'>
       <h5>Type: <% pokemon.types.forEach(p => { %>
@@ -61,7 +61,17 @@
     <% }) %>
   </div>
 </div>
+<% if (user.team.some(p => {return p.id === pokemon.id})) { %>
+<form action="/pokemon/<%= pokemon.id %>/?_method=DELETE" method="POST">
+  <% } else { %>
+  <form action="/pokemon/<%= pokemon.id %>/" method="POST">
+    <% } %>
+    <input type="text" hidden name="name" value="<%= pokemon.name %>">
+    <input type="text" hidden name="id" value="<%= pokemon.id %>">
+    <button
+      class="btn btn-success"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
+  </form>
 
-<% } %>
+  <% } %>
 
-<%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
