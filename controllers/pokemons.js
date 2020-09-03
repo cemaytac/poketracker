@@ -31,7 +31,7 @@ function pokeRemove(req, res) {
 function show(req, res) {
   User.find({})
     .then((users) => {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id.toLowerCase()}`)
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
         .then((response) => {
           Pokemon.findOne({
               id: response.data.id
@@ -41,13 +41,7 @@ function show(req, res) {
                 res.render('pokemon/show', {
                   user: req.user,
                   pokemon: response.data,
-                  id: pokemon._id,
-                  users
-                })
-              } else {
-                res.render('pokemon/show', {
-                  user: req.user,
-                  pokemon: response.data,
+                  id: pokemon.id,
                   users
                 })
               }

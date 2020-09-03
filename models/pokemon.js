@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const pokemonSchema = new mongoose.Schema({
   name: String,
   id: Number,
-  moves: [String],
+  moves: [String]
 })
 
 module.exports = mongoose.model('Pokemon', pokemonSchema)

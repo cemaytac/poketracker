@@ -5,7 +5,6 @@ const teamSchema = new mongoose.Schema({
   name: String,
   id: Number,
   img: String,
-  pokeTypes: [String]
 })
 
 const userSchema = new mongoose.Schema({
