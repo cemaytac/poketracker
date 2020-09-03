@@ -2,7 +2,25 @@ const pokeSound = new Audio("/audio/pokeball.mp3")
 pokeSound.volume = 0.1;
 const clickA = new Audio("/audio/pressA.wav")
 clickA.volume = 0.1;
+const start = new Audio("/audio/startbutton.wav")
+start.volume = 0.2;
+const turnOff = new Audio("/audio/logOff.wav")
+turnOff.volume = 0.1;
+const save = new Audio("/audio/sfx_save.wav")
+save.volume = 0.2;
 
+function saveSound() {
+  save.play();
+}
+
+function logOff() {
+  turnOff.play();
+}
+
+
+function startSound() {
+  start.play();
+}
 
 
 function pokeballSound() {

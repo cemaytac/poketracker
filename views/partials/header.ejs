@@ -23,16 +23,13 @@
             <a class='nav-link' href="/pokemon/pokedex">Pokedex</a>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="/pokemon">Pokemon</a>
-          </li>
-          <li class="nav-item">
             <a class='nav-link' href="/users">User List</a>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="/users/trainer">My Trainer Card</a>
+            <a class='nav-link' href="/users/trainer" onclick="startSound()">My Trainer Card</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/auth/logout">Log Out</a>
+            <a class="nav-link" href="/auth/logout" onclick="logOff()">Log Out</a>
           </li>
           <li class="nav-item">
             <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="user avatar">
