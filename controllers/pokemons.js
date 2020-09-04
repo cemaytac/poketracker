@@ -5,7 +5,6 @@ const User = require('../models/user');
 module.exports = {
   pokedex,
   pokeSearch,
-  show,
   pokeAdd,
   pokeRemove
 };
@@ -18,6 +17,7 @@ function pokeAdd(req, res) {
   })
 }
 
+
 function pokeRemove(req, res) {
   console.log('req.params.id', req.params.id)
   let idx = req.user.team.findIndex((p) => {
@@ -29,25 +29,6 @@ function pokeRemove(req, res) {
   req.user.save().then(() => {
     res.redirect(`/users/trainer`)
   })
-}
-
-function show(req, res) {
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
-    .then((response) => {
-      Pokemon.findOne({
-          id: response.data.id
-        })
-        .then((pokemon) => {
-          if (pokemon) {
-            res.render('pokemon/show', {
-              user: req.user,
-              pokemon: response.data,
-              id: pokemon.id,
-              users
-            })
-          }
-        })
-    })
 }
 
 function pokeSearch(req, res) {

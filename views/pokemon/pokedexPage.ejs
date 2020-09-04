@@ -5,7 +5,7 @@
   <img src="/images/pokedex.png" alt="pokedex">
 </div>
 <form action="/pokemon/pokeSearch" method="POST" class='pokesearch' onload="saveSound()">
-  <input type="text" name="query" placeholder="Enter Pokemon Name">
+  <input type="text" name="query" required='true' placeholder="Enter Pokemon Name" id='search-input'>
   <button class='poke-button' type="submit" onclick="bling()">Search</button>
 </form>
 

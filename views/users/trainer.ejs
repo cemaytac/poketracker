@@ -33,8 +33,9 @@
     <div class="tab-pane fade show" id="pokemonTeam" role="tabpanel" aria-labelledby="pokemon-tab">
       <div class="card-body-pokemon">
         <% user.team.forEach(p => { %>
-        <p><%= p.name.toUpperCase() %></p>
-        <img src="<%= p.img %>" alt="sprite">
+        <p><%= p.name.toUpperCase() %>
+          <img src="<%= p.img %>" alt="sprite">
+        </p>
         <% }) %>
       </div>
     </div>
