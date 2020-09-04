@@ -8,6 +8,12 @@ const turnOff = new Audio("/audio/logOff.wav")
 turnOff.volume = 0.1;
 const save = new Audio("/audio/sfx_save.wav")
 save.volume = 0.2;
+const ballToss = new Audio("/audio/ballToss.wav")
+ballToss.volume = 0.2;
+
+function catchPoke() {
+  ballToss.play();
+}
 
 function saveSound() {
   save.play();
@@ -17,11 +23,9 @@ function logOff() {
   turnOff.play();
 }
 
-
 function startSound() {
   start.play();
 }
-
 
 function pokeballSound() {
   pokeSound.play();

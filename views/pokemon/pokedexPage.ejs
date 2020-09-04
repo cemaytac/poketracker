@@ -27,8 +27,8 @@
           <input type="text" hidden name="name" value="<%= pokemon.name %>">
           <input type="text" hidden name="id" value="<%= pokemon.id %>">
           <input type="text" hidden name="img" value="<%= pokemon.sprites.front_default %>">
-          <button
-            class="btn btn-success"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
+          <button class="btn btn-success"
+            onclick="catchPoke()"><%= user.team.some(p => {return p.id === pokemon.id}) ? "Remove Pokemon" : "Add Pokemon" %></button>
         </form>
     </div>
     <div class='poke-category'>
