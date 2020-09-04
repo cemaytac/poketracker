@@ -10,15 +10,15 @@
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="trainerinfo-tab" data-toggle="tab" href="#trainerinfo" role="tab"
-        aria-controls="trainerinfo" aria-selected="true">My Info</a>
+        aria-controls="trainerinfo" aria-selected="true" onclick="bling()">My Info</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="updateinfo-tab" data-toggle="tab" href="#updateinfo" role="tab" aria-controls="updateinfo"
-        aria-selected="false">Update Info</a>
+        aria-selected="false" onclick="bling()">Update Info</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="pokemon-tab" data-toggle="tab" href="#pokemonTeam" role="tab" aria-controls="pokemonTeam"
-        aria-selected="false">Pokemon</a>
+        aria-selected="false" onclick="bling()">Pokemon</a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -70,7 +70,7 @@
                     placeholder='####-####-####' name="friendCode" value="<%= user.friendCode %>">
                 </div>
               </div>
-              <button type="submit" onclick="saveSound()">Update</button>
+              <button type="submit" onclick="saveSound()" style="margin-left: 100px;">Update</button>
           </div>
         </div>
       </div>

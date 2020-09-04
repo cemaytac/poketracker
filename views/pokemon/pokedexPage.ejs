@@ -18,7 +18,7 @@
   <div class="poke-content">
     <div class='name-add'>
       <h3><%= pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1) %></h3>
-      <h4>ID: <%= pokemon.id %></h4>
+      <h4>Dex ID: <%= pokemon.id %></h4>
       <% if (user.team.some(p => {return p.id == pokemon.id})) { %>
       <form action="/pokemon/<%= pokemon.id %>/team?_method=DELETE" method="POST">
         <% } else { %>

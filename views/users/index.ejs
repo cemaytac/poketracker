@@ -1,16 +1,18 @@
 <%- include('../partials/header') %>
 
-<div class='user-list-header'>
-  <h2>User List</h2>
-</div>
-<div class='user-list'>
-  <ul>Registered Users:
-    <% users.forEach(u => { %>
-    <a href="/users/<%= u._id %>">
-      <li><%= u.name %></li>
-    </a>
-    <% }) %>
-  </ul>
-</div>
+<body onload="login()">
 
-<%- include('../partials/footer') %>
+  <div class='user-list-header'>
+    <h2>User List</h2>
+  </div>
+  <div class='user-list'>
+    <ul>Registered Users:
+      <% users.forEach(u => { %>
+      <a href="/users/<%= u._id %>">
+        <li><%= u.name %></li>
+      </a>
+      <% }) %>
+    </ul>
+  </div>
+
+  <%- include('../partials/footer') %>
