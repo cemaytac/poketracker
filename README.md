@@ -22,7 +22,7 @@ This project was created with the goal of making pokemon training a little easie
 ## Screenshots
 ![pic](https://i.imgur.com/bcPO7hl.png/to/img.png)
 ![pic](https://i.imgur.com/uNb7CXG.png/to/img.png)
-![pic](https://i.imgur.com/zGSP0fP.png/to/img.png)
+![pic](https://i.imgur.com/sWoLcPL.png/to/img.png)
 
 ## Technologies Used
 Project is created with:
