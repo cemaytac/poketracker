@@ -1,6 +1,5 @@
 const Pokemon = require('../models/pokemon')
 const axios = require('axios');
-const User = require('../models/user');
 
 module.exports = {
   pokedex,
@@ -16,7 +15,6 @@ function pokeAdd(req, res) {
     res.redirect(`/users/trainer`)
   })
 }
-
 
 function pokeRemove(req, res) {
   console.log('req.params.id', req.params.id)

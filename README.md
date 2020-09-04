@@ -3,12 +3,21 @@ Poketracker, a new way to keep track of your pokemon!
 
 ## Screenshots
 
+
 ## Technologies Used
-HTML/CSS/JS
-PokeAPI
-Node JS/Express
-MongoDB/Mongoose
-OAuth
+
+NodeJS
+ExpressJS
+Express Generator
+MongoDB
+MongooseJS
+MongoDB Atlas
+EJS Templating
+Heroku with NodeJS
+Fetch in JS
+Postman API Development
+Google OAuth 2.0
+PassportJS 
 
 ## Getting Started
 

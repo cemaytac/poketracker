@@ -13,7 +13,7 @@
     <p class="card-text">Bio: <%= userInfo.bio %></p>
     <p class="card-text">Email: <a href="mailto:<%= userInfo.email %>"><%= userInfo.email %></a></p>
     <p class="card-text">Friend Code: <%= userInfo.friendCode %></p>
-    <p class="card-text">Pokemon team: <% userInfo.team.forEach(p => { %>
+    <p class="card-text">Pokemon Team: <% userInfo.team.forEach(p => { %>
       <p><%= p.name.toUpperCase() %>
         <img src="<%= p.img %>" alt="sprite">
       </p>
